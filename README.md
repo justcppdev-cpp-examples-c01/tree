@@ -14,7 +14,8 @@ class tree_t
 {
 private:
     struct node_t {
-        node_t * next;
+        node_t * left;
+        node_t * right;
         int value;
     };
 private:
