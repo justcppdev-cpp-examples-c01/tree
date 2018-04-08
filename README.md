@@ -2,8 +2,8 @@
 
 ### Задание
 Написать программу для работы с бинарным деревом поиска:
-- `+` - добавить элемент
-- `?` - найти элемент
+- `+` - добавить ключ
+- `?` - найти ключ
 - `=` - вывести на экран дерево
 - `q` - выйти
 
@@ -16,13 +16,13 @@ private:
     struct node_t {
         node_t * left;
         node_t * right;
-        int value;
+        int key;
     };
 private:
     node_t * root_;
 public:
-    void insert(int value);
-    bool find(int value) const;
+    void insert(int key);
+    bool find(int key) const;
     void print(std::ostream & stream) const;
 };
 ```
@@ -61,4 +61,36 @@ false
 --------1
 
 q
+```
+
+# tree@0.0.2
+
+### Задание
+- Сделать класс шаблоном
+- Добавить метод удаления ключа
+- Добавить метод сравнения деревьев
+- Добавить поддержку списка инициализации
+
+### Замечания
+Для реализации бинарного дерева поиска используйте класс следующего вида:
+```
+template <typename T>
+class tree_t
+{
+private:
+    struct node_t {
+        node_t * left;
+        node_t * right;
+        T key;
+    };
+private:
+    node_t * root_;
+public:
+    tree_t(std::initializer_list<T> keys);
+    auto operator==(tree_t const & other) const;
+    void insert(T key);
+    bool remove(T key);
+    bool find(T key) const;
+    void print(std::ostream & stream) const;
+};
 ```
